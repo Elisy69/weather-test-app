@@ -71,6 +71,7 @@ const { weatherData } = useWeather();
   height: 100%;
 }
 .descrWrapper {
+  height: 30%;
   display: flex;
   justify-content: center;
 }

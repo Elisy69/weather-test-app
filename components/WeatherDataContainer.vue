@@ -16,11 +16,12 @@ const { weatherData } = useWeather();
 <style scoped>
 .forecastWrapper {
   display: flex;
-  justify-content: space-evenly;
   gap: 0.5rem;
+  height: 40%;
+  align-items: center;
 }
 .weatherdatacontainer {
   width: 100%;
-  height: 100%;
+  height: 90%;
 }
 </style>
