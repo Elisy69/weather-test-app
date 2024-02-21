@@ -3,9 +3,15 @@ const loc = ref("");
 const { getWeather } = useWeather();
 </script>
 <template>
-  <div>
+  <div class="searchFormWrapper">
     <input v-model="loc" type="text" />
-    <button @click="getWeather(loc)">Get weather forecast</button>
+    <button @click="getWeather(loc)">Find</button>
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+.searchFormWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+</style>

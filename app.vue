@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import "~/styles/normalize.css";
+import "~/styles/global.css";
 const { weatherData, errorMessage } = useWeather();
 </script>
 
 <template>
-  <div>
+  <div class="widgetWrapper">
     <SearchForm />
     <WeatherDataContainer v-if="weatherData && !errorMessage" />
     <div v-if="!weatherData && !errorMessage">
@@ -12,4 +14,15 @@ const { weatherData, errorMessage } = useWeather();
     <div v-if="errorMessage">Oops, something went wrong, try again!</div>
   </div>
 </template>
-<style scoped></style>
+<style>
+.widgetWrapper {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  height: 20rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  gap: 1rem;
+}
+</style>
