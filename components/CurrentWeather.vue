@@ -1,16 +1,14 @@
 <script setup lang="ts">
+import { getDateString } from "~/helpers/getDateString";
 const { weatherData } = useWeather();
-
-watchEffect(() => {
-  console.log("WATCH EFFECT", weatherData.value);
-});
 </script>
 <template>
   <div class="currentWeatherWrapper">
-    <div class="weatherInfo">
-      <h1 class="locaton">
-        {{ weatherData.city.name }}, {{ weatherData.list[0].dt }}
-      </h1>
+    <div class="weatherInfo_left">
+      <div>
+        <h1 class="location">{{ weatherData.city.name }},</h1>
+        <h3 class="location">{{ getDateString(0) }}</h3>
+      </div>
       <div class="conditions">
         <span class="conditions_item"
           >Temperature: {{ Math.round(weatherData.list[0].main.temp) }}° C</span
@@ -23,27 +21,60 @@ watchEffect(() => {
         >
       </div>
     </div>
-    <div></div>
+    <div class="weatherInfo_right">
+      <div class="weatherIconWrapper">
+        <img
+          class="weatherIcon"
+          :src="`https://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}@2x.png`"
+        />
+      </div>
+      <div class="descrWrapper">
+        <span class="weatherDescr">{{
+          weatherData.list[0].weather[0].main
+        }}</span>
+      </div>
+    </div>
   </div>
 </template>
 <style scoped>
 .currentWeatherWrapper {
   display: flex;
+  height: 60%;
 }
-.weatherInfo {
+.weatherInfo_left {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+  width: 50%;
 }
-.locaton {
+.location {
   margin: 0;
 }
 .conditions {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
 }
 .conditions_item {
   font-size: 1rem;
+}
+.weatherInfo_right {
+  width: 50%;
+}
+.weatherIconWrapper {
+  height: 70%;
+}
+.weatherIcon {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.descrWrapper {
+  display: flex;
+  justify-content: center;
+}
+.weatherDescr {
+  font-size: 1.5rem;
 }
 </style>

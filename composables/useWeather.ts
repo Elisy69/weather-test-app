@@ -1,12 +1,12 @@
 import { ref } from "vue";
 
-type SomeWeatherDataType = unknown;
+type SomeWeatherDataType = any;
 
 const weatherData = ref<null | SomeWeatherDataType>(null);
 const errorMessage = ref(false);
 
 export function useWeather() {
-  const getWeather = async (location: String) => {
+  const getWeather = async (location: string) => {
     try {
       errorMessage.value = false;
       const data = await $fetch(
